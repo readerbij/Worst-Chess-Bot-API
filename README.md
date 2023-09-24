@@ -1,6 +1,8 @@
-# Chess Coding Challenge (C#)
-Welcome to the Worst Chess Bot Challenge! This is a friendly competition in which your goal is to create a chess bot (in C#) using the framework provided in this repository.
-Once submissions close, these bots will battle it out to discover which bot is best!
+# Worst Chess Bot API (C#)
+Welcome to the Worst Chess Bot API! This is an edited version of Sebastian Lague's Chess-Challenge project, removing the Bot Brain Capacity UI and adding items to fit with a local competition I have created. Feel free to use this repo for regular chess machine learning shenanigans. Just watch out; draws are punished, so you may need to change that. 
+
+# For Participants of Competition
+Welcome to the Worst Chess Bot Challenge! These bots will battle it out to see which one is truly the worst of them all!
 
 The winner will receive a prize of a $10 or $20 gift card (TBD).
 
@@ -27,7 +29,17 @@ You are free to edit your entry at any point up to the due date.
 * Once you're happy with your chess bot, email me the MyBot.cs file.
   * You will be able to edit your entry up until the competition closes.
 
-## Rules
+
+## Game Rules
+Here are the modified chess rules for this competition. Most of these rules are to prevent draws.
+* The “winner” of each game will receive a score of -1, and the “loser” a score of 1.
+* The player who loses all of their pieces first (not including their king) is the “loser” of the game.
+* If three-fold repetition or the fifty-move rule occurs, both players will be punished with a score of -1 and the game will end (this punishment might be increased if draws become too common).
+* If a stalemate occurs, whoever is stalemated is the “loser” (score +1) and the person who stalemated the other is the “winner” (score -1)
+
+
+
+## Coding Rules
 * You must participate alone. While collaboration is encouraged, teams are not allowed.
 * You may submit a maximum of two entries.
   * Please only submit a second entry if it is significantly different from your first bot (not just a minor tweak).
