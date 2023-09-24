@@ -1,13 +1,14 @@
 ﻿namespace ChessChallenge.Chess
 {
     using System.Linq;
+    using Microsoft.CodeAnalysis.CSharp.Syntax;
 
     public static class Arbiter
     {
         public static bool IsDrawResult(GameResult result)
         {
             return result is GameResult.DrawByArbiter or GameResult.FiftyMoveRule or
-                GameResult.Repetition or GameResult.Stalemate or GameResult.InsufficientMaterial;
+                GameResult.Repetition or GameResult.InsufficientMaterial;
         }
 
         public static bool IsWinResult(GameResult result)
@@ -17,12 +18,12 @@
 
         public static bool IsWhiteWinsResult(GameResult result)
         {
-            return result is GameResult.BlackIsMated or GameResult.BlackTimeout or GameResult.BlackIllegalMove;
+            return result is GameResult.BlackIsMated or GameResult.BlackTimeout or GameResult.BlackIllegalMove or GameResult.BlackHasNoPieces or GameResult.BlackIsStalemated;
         }
 
         public static bool IsBlackWinsResult(GameResult result)
         {
-            return result is GameResult.WhiteIsMated or GameResult.WhiteTimeout or GameResult.WhiteIllegalMove;
+            return result is GameResult.WhiteIsMated or GameResult.WhiteTimeout or GameResult.WhiteIllegalMove or GameResult.WhiteHasNoPieces or GameResult.WhiteIsStalemated;
         }
 
 
@@ -38,7 +39,7 @@
                 {
                     return (board.IsWhiteToMove) ? GameResult.WhiteIsMated : GameResult.BlackIsMated;
                 }
-                return GameResult.Stalemate;
+                return (board.IsWhiteToMove) ? GameResult.WhiteIsStalemated : GameResult.BlackIsStalemated;
             }
 
             // Fifty move rule
@@ -58,6 +59,16 @@
             if (InsufficentMaterial(board))
             {
                 return GameResult.InsufficientMaterial;
+            }
+            // -------- ADDED CODE ---------
+            //insert code to determine if white or black has no pieces
+            if (board.pawns[Board.WhiteIndex].Count + board.knights[Board.WhiteIndex].Count + board.bishops[Board.WhiteIndex].Count + board.rooks[Board.WhiteIndex].Count + board.queens[Board.WhiteIndex].Count == 0)
+            {
+                return GameResult.WhiteHasNoPieces;
+            }
+            if (board.pawns[Board.BlackIndex].Count + board.knights[Board.BlackIndex].Count + board.bishops[Board.BlackIndex].Count + board.rooks[Board.BlackIndex].Count + board.queens[Board.BlackIndex].Count == 0)
+            {
+                return GameResult.BlackHasNoPieces;
             }
             return GameResult.InProgress;
         }

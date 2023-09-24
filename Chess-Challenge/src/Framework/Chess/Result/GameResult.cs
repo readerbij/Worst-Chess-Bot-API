@@ -2,11 +2,17 @@ namespace ChessChallenge.Chess
 {
     public enum GameResult
     {
+        
         NotStarted,
         InProgress,
+        //added results here
+        WhiteHasNoPieces,
+        BlackHasNoPieces,
         WhiteIsMated,
         BlackIsMated,
-        Stalemate,
+        //added results here
+        WhiteIsStalemated,
+        BlackIsStalemated,
         Repetition,
         FiftyMoveRule,
         InsufficientMaterial,

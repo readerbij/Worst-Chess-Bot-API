@@ -333,17 +333,21 @@ namespace ChessChallenge.Application
                 // Draw
                 if (Arbiter.IsDrawResult(result))
                 {
+                     
                     stats.NumDraws++;
+                    stats.TotalReward--;
                 }
                 // Win
                 else if (Arbiter.IsWhiteWinsResult(result) == isWhiteStats)
                 {
                     stats.NumWins++;
+                    stats.TotalReward--;
                 }
                 // Loss
                 else
                 {
                     stats.NumLosses++;
+                    stats.TotalReward++;
                     stats.NumTimeouts += (result is GameResult.WhiteTimeout or GameResult.BlackTimeout) ? 1 : 0;
                     stats.NumIllegalMoves += (result is GameResult.WhiteIllegalMove or GameResult.BlackIllegalMove) ? 1 : 0;
                 }
@@ -389,7 +393,6 @@ namespace ChessChallenge.Application
 
         public void DrawOverlay()
         {
-            BotBrainCapacityUI.Draw(tokenCount, debugTokenCount, MaxTokenCount);
             MenuUI.DrawButtons(this);
             MatchStatsUI.DrawMatchStats(this);
         }
@@ -446,6 +449,7 @@ namespace ChessChallenge.Application
             public int NumDraws;
             public int NumTimeouts;
             public int NumIllegalMoves;
+            public int TotalReward;
 
             public BotMatchStats(string name) => BotName = name;
         }
