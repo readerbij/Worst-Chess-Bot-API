@@ -28,7 +28,7 @@ namespace ChessChallenge.Application
                 void DrawStats(ChallengeController.BotMatchStats stats)
                 {
                     DrawNextText(stats.BotName + ":", nameFontSize, Color.WHITE);
-                    DrawNextText($"Wins, Draws, and Losses: -{stats.NumWins} ={stats.NumDraws} +{stats.NumLosses}", regularFontSize, col);
+                    DrawNextText($"-W =D +L: -{stats.NumWins} ={stats.NumDraws} +{stats.NumLosses}", regularFontSize, col);
                     DrawNextText($"Num Timeouts: {stats.NumTimeouts}", regularFontSize, col);
                     DrawNextText($"Num Illegal Moves: {stats.NumIllegalMoves}", regularFontSize, col);
                     DrawNextText($"Total score: {stats.TotalReward}", regularFontSize, col);

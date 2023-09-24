@@ -17,7 +17,6 @@ public class MyBot : IChessBot
         Random rng = new();
         Move moveToPlay = allMoves[rng.Next(allMoves.Length)];
         
-
         return moveToPlay;
     }
 }
