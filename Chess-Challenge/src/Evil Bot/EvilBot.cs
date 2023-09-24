@@ -3,8 +3,7 @@ using System;
 
 namespace ChessChallenge.Example
 {
-    // A simple bot that can spot mate in one, and always captures the most valuable piece it can.
-    // Plays randomly otherwise.
+    // A simple bot that just tries to avoid captures
     public class EvilBot : IChessBot
     {
         // Piece values: null, pawn, knight, bishop, rook, queen, king
@@ -31,7 +30,7 @@ namespace ChessChallenge.Example
                     moveToPlay = move;
                     break;
                 }
-
+                //Find the capture with the lowest value
                 if (capturedPieceValue < lowestValueCapture)
                 {
                     moveToPlay = move;

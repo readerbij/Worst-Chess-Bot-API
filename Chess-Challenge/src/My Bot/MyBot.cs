@@ -11,9 +11,10 @@ public class MyBot : IChessBot
 
     public Move Think(Board board, Timer timer)
     {
+        //Get a list of legal moves
         Move[] allMoves = board.GetLegalMoves();
 
-        // Pick a random move to play if nothing better is found
+        // Pick a random move to play
         Random rng = new();
         Move moveToPlay = allMoves[rng.Next(allMoves.Length)];
         
