@@ -53,7 +53,6 @@ Here are the modified chess rules for this competition. Most of these rules are 
       * You may not use the `AsParallel()` function
 * As implied by the allowed namespaces, you may not read data from a file or access the internet, nor may you create any new threads or tasks to run code in parallel/in the background.
 * You may not use the unsafe keyword.
-* You may not store data inside the name of a variable/function/class etc (to be extracted with `nameof()`, `GetType().ToString()`, `Environment.StackTrace` and so on). Thank you to [#12](https://github.com/SebLague/Chess-Challenge/issues/12) and [#24](https://github.com/SebLague/Chess-Challenge/issues/24).
 * If your bot makes an illegal move or runs out of time, it will lose the game.
    * Games are played with 1 minute per side by default (this can be changed in the settings class). The final tournament time control is TBD, so your bot should not assume a particular time control, and instead respect the amount of time left on the timer (given in the Think function).
 * All of your code/data must be contained within the _MyBot.cs_ file.
@@ -63,10 +62,10 @@ Here are the modified chess rules for this competition. Most of these rules are 
 ## FAQ and Troubleshooting
 * What is the format of the tournament?
   * The tournament will be a round-robin, with all bots playing 100 games against other bots. The top two bots in the round-robin stage will play each other in a best of 14 in the finals.
-* [Unable to build/run the project from my IDE/Code editor](https://github.com/SebLague/Chess-Challenge/issues/85)
+* Unable to build/run the project from my IDE/Code editor
   * After downloading the project and installing .Net 6.0, open a terminal / command prompt window.
   * Navigate to the folder where Chess-Challenge.csproj is located using the `cd` command.
-    * For example: `cd C:\Users\MyName\Desktop\Chess-Challenge\Chess-Challenge`
+    * For example: `cd C:\Users\MyName\Desktop\Worst-Chess-Bot-API\Chess-Challenge`
   * Now use the command: `dotnet run`
   * This should launch the project. If not, open an issue with any error messages and relevant info.
 * Issues with illegal moves or errors when making/undoing a move
